@@ -1,3 +1,12 @@
 table {
   width: 100%;
 }
+
+.loading-spinner {
+  border: solid 0.5px #d8d8d8;
+  box-shadow: 5px 10px 30px #c7c6c6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+}
