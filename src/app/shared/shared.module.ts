@@ -1,20 +1,24 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ErrorDialogComponent } from './components/error-dialog/error-dialog.component';
+import { NgModule } from '@angular/core';
+
 import { AppMaterialModule } from './app-material/app-material.module';
+import { ErrorDialogComponent } from './components/error-dialog/error-dialog.component';
+import { CategoryPipe } from './pipes/category.pipe';
 
 
 //Declaração é só componentes, módulos são no imports
 @NgModule({
   declarations: [
-    ErrorDialogComponent
+    ErrorDialogComponent,
+    CategoryPipe
   ],
   imports: [
     CommonModule,
     AppMaterialModule
   ],
   exports: [
-    ErrorDialogComponent
+    ErrorDialogComponent,
+    CategoryPipe
   ]
 })
 export class SharedModule { }

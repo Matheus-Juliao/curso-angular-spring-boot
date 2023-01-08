@@ -8,7 +8,7 @@ import { first, tap } from 'rxjs';
 })
 export class CoursesService {
 
-  private readonly url: string = '/assets/acourses.json';
+  private readonly url: string = '/assets/courses.json';
 
   constructor(private httpClient: HttpClient) { }
 
