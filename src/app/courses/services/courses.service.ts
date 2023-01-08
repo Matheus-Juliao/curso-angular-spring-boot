@@ -8,7 +8,7 @@ import { first, tap } from 'rxjs';
 })
 export class CoursesService {
 
-  private readonly url: string = '/assets/courses.json';
+  private readonly url: string = '/assets/acourses.json';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -20,9 +20,9 @@ export class CoursesService {
   public list() {
     return this.httpClient.get<Course[]>(this.url)
     .pipe(
-      first(),
+      first()
       //delay(5000),
-      tap(courses => console.log(courses))
+      //tap(courses => console.log(courses))
     )
   }
 }
