@@ -17,6 +17,25 @@
             <!-- <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon> -->
             <span class="material-icons">{{ course.category | category }}</span>
           </td>
+        </ng-container>
+
+        <!-- Action Column -->
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef>
+            <button mat-mini-fab color="primary" aria-label="Adicionar curso">
+              <mat-icon (click)="onAdd()">add</mat-icon>
+            </button>
+          </mat-header-cell>
+
+          <mat-cell *matCellDef="let course">
+            <button mat-icon-button color="primary" aria-label="Editar curso">
+              <mat-icon>edit</mat-icon>
+            </button>
+
+            <button mat-icon-button color="warn" aria-label="Remover curso">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-cell>
 
         </ng-container>
 
