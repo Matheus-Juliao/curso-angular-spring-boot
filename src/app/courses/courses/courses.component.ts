@@ -15,19 +15,17 @@ import { CoursesService } from '../services/courses.service';
 export class CoursesComponent implements OnInit {
 
   public courses$: Observable<Course[]>;
-  public displayedColumns = ['name', 'category', 'actions'];
 
   constructor(
     private cursosServices: CoursesService,
     public dialog: MatDialog,
-    private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {
     //*this.courses = [];
     this.courses$ = this.cursosServices.list()
     .pipe(
       catchError(error => {
-        console.log(error);
         this.onError('Erro ao carregar cursos.')
         return of([])
       })
