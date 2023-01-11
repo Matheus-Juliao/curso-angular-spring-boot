@@ -1,7 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { Course } from '../model/course';
+import { Course } from '../../model/course';
 
 @Component({
   selector: 'app-courses-list',
@@ -10,19 +9,24 @@ import { Course } from '../model/course';
 })
 export class CoursesListComponent implements OnInit {
 
-  //Tudo que vai entrar e ser passado para esse componente
+  //@Input() Tudo que vai entrar e ser passado para esse componente
   @Input() public courses: Course[] = [];
+
+  //Tudo que está saindo, ou seja, eventos que estão saindo
+  @Output() add = new EventEmitter(false)
+
   public readonly displayedColumns = ['name', 'category', 'actions'];
 
-  constructor(private router: Router,
-    private route: ActivatedRoute) { }
+  constructor() {
+    //constructor
+   }
 
   ngOnInit(): void {
     //ngOnInit
   }
 
   public onAdd() {
-    this.router.navigate(['new'], { relativeTo: this.route })
+    this.add.emit(true)
   }
 
 }
