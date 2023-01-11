@@ -26,7 +26,7 @@ export class CoursesService {
     )
   }
 
-  public save(record: Course) {
+  public save(record: Partial<Course>) {
     return this.httpClient.post<Course>(this.url, record).pipe(first())
   }
 }
