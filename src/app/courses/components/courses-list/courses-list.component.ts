@@ -31,7 +31,7 @@ export class CoursesListComponent implements OnInit {
   }
 
   public onEdit(course: Course) {
-    this.edit.emit(true)
+    this.edit.emit(course)
   }
 
 }
