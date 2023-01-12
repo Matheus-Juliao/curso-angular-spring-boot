@@ -31,6 +31,17 @@ export class CoursesService {
   }
 
   public save(record: Partial<Course>) {
+    if(record._id) {
+      return this.update(record)
+    }
+    return this.create(record)
+  }
+
+  private create(record: Partial<Course>) {
     return this.httpClient.post<Course>(this.url, record).pipe(first())
+  }
+
+  private update(record: Partial<Course>) {
+    return this.httpClient.put<Course>(`${this.url}/${record._id}`, record).pipe(first())
   }
 }
