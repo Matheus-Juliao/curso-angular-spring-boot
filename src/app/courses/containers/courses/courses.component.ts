@@ -33,6 +33,12 @@ export class CoursesComponent implements OnInit {
 
   }
 
+  onError(errorMsg: string) {
+    this.dialog.open(ErrorDialogComponent, {
+      data: errorMsg
+    });
+  }
+
   ngOnInit(): void {
     //ngOnInit
   }
@@ -41,10 +47,10 @@ export class CoursesComponent implements OnInit {
     this.router.navigate(['new'], { relativeTo: this.route })
   }
 
-  onError(errorMsg: string) {
-    this.dialog.open(ErrorDialogComponent, {
-      data: errorMsg
-    });
+  public OnEdit(course: Course) {
+    this.router.navigate(['edit', course._id], { relativeTo: this.route })
   }
+
+
 
 }

@@ -26,6 +26,10 @@ export class CoursesService {
     )
   }
 
+  public loadById(id: string) {
+    return this.httpClient.get<Course>(`${this.url}/${id}`)
+  }
+
   public save(record: Partial<Course>) {
     return this.httpClient.post<Course>(this.url, record).pipe(first())
   }
