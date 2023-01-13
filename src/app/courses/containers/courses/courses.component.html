@@ -8,7 +8,8 @@
         *ngIf="courses$ | async as courses; else loading"
         [courses]="courses"
         (add)="onAdd()"
-        (edit)="OnEdit($event)"
+        (edit)="onEdit($event)"
+        (delete)="onDelete($event)"
       ></app-courses-list>
 
       <ng-template #loading>

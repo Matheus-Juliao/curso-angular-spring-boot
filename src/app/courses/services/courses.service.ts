@@ -44,4 +44,8 @@ export class CoursesService {
   private update(record: Partial<Course>) {
     return this.httpClient.put<Course>(`${this.url}/${record._id}`, record).pipe(first())
   }
+
+  public delete(id: string) {
+    return this.httpClient.delete(`${this.url}/${id}`).pipe(first())
+  }
 }
