@@ -7,6 +7,7 @@ import { ErrorDialogComponent } from '../../../shared/components/error-dialog/er
 import { Course } from '../../model/course';
 import { CoursesService } from '../../services/courses.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ConfirmationDialogComponent } from '../../components/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-courses',
@@ -58,19 +59,28 @@ export class CoursesComponent implements OnInit {
   }
 
   public onDelete(course: Course) {
-    this.cursosServices.delete(course._id).subscribe({
-      next: () => {
-        this.refresh()
-        this.snackBar.open('Curso removido com sucesso!', 'X', {
-          duration: 5000,
-          verticalPosition: 'top',
-          horizontalPosition: 'center'
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      data: "Tem certeza que deseja remover esse recurso?",
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result) {
+        this.cursosServices.delete(course._id).subscribe({
+          next: () => {
+            this.refresh()
+            this.snackBar.open('Curso removido com sucesso!', 'X', {
+              duration: 5000,
+              verticalPosition: 'top',
+              horizontalPosition: 'center'
+            })
+          },
+          error: () => {
+            this.onError("Erro ao tentar remover curso.")
+          }
         })
-      },
-      error: () => {
-        this.onError("Erro ao tentar remover curso.")
       }
-    })
+    });
+
   }
 
 }
